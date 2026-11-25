@@ -1148,6 +1148,9 @@ $('quiz').addEventListener('submit',e=>{ e.preventDefault(); const f=new FormDat
  place(); addEventListener('resize',place); new ResizeObserver(place).observe(sec);
  b.addEventListener('click',()=>{ const c=document.querySelector('#invite .cue'); if(c) c.hidden=true; setTimeout(()=>{ b.hidden=true },700) });
 })();
+
+/* 방송 화면: 화면이 30%만 보여도 자동 재생 (띠 전체 40% 기준이면 큰 화면·세로 화면에서 늦거나 안 뜸) */
+;(()=>{const m=document.getElementById('monitor'); if(!m)return; new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ stopSeq(); o.disconnect() } }),{threshold:.3}).observe(m)})();
 </script>
 
 </body>
